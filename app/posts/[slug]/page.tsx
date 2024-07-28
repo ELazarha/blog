@@ -1,12 +1,16 @@
-
 import prisma from "@/prisma/client";
 
-const PostPage = async ({ params }) => {
+const PostPage = async ({
+  params,
+}: {
+  params: {
+    slug: string;
+  };
+}) => {
   const post = await prisma.post.findUnique({
     where: {
       slug: params.slug,
     },
-    
   });
   return (
     <main className="flex flex-col items-center gap-y-5 pt-24 text-center">
